@@ -20,18 +20,17 @@ public class ComputerPlayer extends Player {
     @Override
     public Move nextMove() {
 
-        do {
-            int posX = random.nextInt(board.getGridSize());
-            int posY = random.nextInt(board.getGridSize());
-
-            Position position = new Position(posX, posY);
-
-            if (board.getSymbolForPosition(position) == Symbol.EMPTY) {
-                System.out.println("Computer placed the marker at position  = " + position);
-                return new Move(position, getSymbol());
+        for (int i = 0; i < board.getGridSize(); i++) {
+            for (int j = 0; j < board.getGridSize(); j++) {
+                Position position = new Position(i, j);
+                if (board.getSymbolForPosition(position) == Symbol.EMPTY) {
+                    System.out.println("Computer placed the marker at position  = " + position);
+                    return new Move(position, getSymbol());
+                }
             }
-        }while(true);
-
+        }
+        return null;
     }
+
 }
 
