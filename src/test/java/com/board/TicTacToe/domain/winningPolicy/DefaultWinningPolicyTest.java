@@ -5,11 +5,8 @@ import com.board.TicTacToe.domain.Move;
 import com.board.TicTacToe.domain.Position;
 import com.board.TicTacToe.domain.Symbol;
 import com.board.TicTacToe.domain.counter.SymbolCountMap;
-import com.board.TicTacToe.domain.winningPolicy.DefaultWinningPolicy;
-import com.board.TicTacToe.exception.GameFinishedException;
-import com.board.TicTacToe.exception.InvalidMoveException;
-import com.board.TicTacToe.domain.winningPolicy.WinningPolicy;
 import com.board.TicTacToe.exception.DuplicateMoveException;
+import com.board.TicTacToe.exception.InvalidMoveException;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -24,7 +21,7 @@ public class DefaultWinningPolicyTest {
 
     @Test
     public void shouldReturnGameStateAsPlayableIfNoWinningCountIsObtained()
-            throws DuplicateMoveException, GameFinishedException, InvalidMoveException {
+            throws DuplicateMoveException, InvalidMoveException {
 
         WinningPolicy winningPolicy = new DefaultWinningPolicy();
         Symbol symbolX = new Symbol("X");
@@ -36,7 +33,7 @@ public class DefaultWinningPolicyTest {
 
     @Test
     public void shouldReturnGameStateAsDRAWIfNoMoreMovesLeftToBePlayed()
-            throws DuplicateMoveException, GameFinishedException, InvalidMoveException {
+            throws DuplicateMoveException, InvalidMoveException {
 
         WinningPolicy winningPolicy = new DefaultWinningPolicy();
         Symbol symbolX = new Symbol("X");
@@ -57,7 +54,7 @@ public class DefaultWinningPolicyTest {
 
     @Test
     public void shouldReturnGameStateAsWonIfThereAreSameSymbolsInACol()
-            throws DuplicateMoveException, GameFinishedException, InvalidMoveException {
+            throws DuplicateMoveException, InvalidMoveException {
 
         WinningPolicy winningPolicy = new DefaultWinningPolicy();
         Symbol symbolX = new Symbol("X");
@@ -70,7 +67,7 @@ public class DefaultWinningPolicyTest {
 
     @Test
     public void shouldReturnGameStateAsWonIfThereAreSameSymbolsInARow()
-            throws DuplicateMoveException, GameFinishedException, InvalidMoveException {
+            throws DuplicateMoveException, InvalidMoveException {
 
         WinningPolicy winningPolicy = new DefaultWinningPolicy();
         Symbol symbolX = new Symbol("X");
@@ -83,7 +80,7 @@ public class DefaultWinningPolicyTest {
 
     @Test
     public void shouldReturnGameStateAsWonIfThereAreSameSymbolsInTheLeftDiagonal()
-            throws DuplicateMoveException, GameFinishedException, InvalidMoveException {
+            throws DuplicateMoveException, InvalidMoveException {
 
         WinningPolicy winningPolicy = new DefaultWinningPolicy();
         Symbol symbolX = new Symbol("X");
@@ -96,7 +93,7 @@ public class DefaultWinningPolicyTest {
 
     @Test
     public void shouldReturnGameStateAsWonIfThereAreSameSymbolsInTheRightDiagonal()
-            throws DuplicateMoveException, GameFinishedException, InvalidMoveException {
+            throws DuplicateMoveException, InvalidMoveException {
 
         WinningPolicy winningPolicy = new DefaultWinningPolicy();
         Symbol symbolX = new Symbol("X");

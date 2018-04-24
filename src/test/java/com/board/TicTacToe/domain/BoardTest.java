@@ -1,7 +1,6 @@
 package com.board.TicTacToe.domain;
 
 import com.board.TicTacToe.domain.winningPolicy.WinningPolicy;
-import com.board.TicTacToe.exception.GameFinishedException;
 import com.board.TicTacToe.exception.InvalidMoveException;
 import com.board.TicTacToe.exception.DuplicateMoveException;
 import org.junit.Before;
@@ -31,14 +30,14 @@ public class BoardTest {
     }
 
     @Test
-    public void shouldAcceptAMove() throws InvalidMoveException, GameFinishedException, DuplicateMoveException {
+    public void shouldAcceptAMove() throws InvalidMoveException, DuplicateMoveException {
         Position p = new Position(1, 1);
         board.accept(new Move(p, new Symbol("X")));
         assertThat(board.getNoOfVacantSpaces()).isEqualTo(8);
     }
 
     @Test
-    public void shouldAcceptMoreThanOneMove() throws InvalidMoveException, GameFinishedException, DuplicateMoveException {
+    public void shouldAcceptMoreThanOneMove() throws InvalidMoveException, DuplicateMoveException {
         Position p = new Position(1, 1);
         board.accept(new Move(p, new Symbol("X")));
 
@@ -50,7 +49,7 @@ public class BoardTest {
 
 
     @Test(expected = DuplicateMoveException.class)
-    public void shouldNotAcceptADuplicateMove() throws InvalidMoveException, GameFinishedException, DuplicateMoveException {
+    public void shouldNotAcceptADuplicateMove() throws InvalidMoveException, DuplicateMoveException {
         Position p = new Position(1, 1);
         board.accept(new Move(p, new Symbol("X")));
         board.accept(new Move(p, new Symbol("X")));
@@ -59,14 +58,14 @@ public class BoardTest {
 
     @Test(expected = InvalidMoveException.class)
     public void shouldThrowAnInvalidMoveExceptionIfThePositionOfTheMoveIsOutOfTheBoard()
-            throws InvalidMoveException, GameFinishedException, DuplicateMoveException {
+            throws InvalidMoveException, DuplicateMoveException {
         Position p = new Position(10, 10);
         Move invalidMove = new Move(p, new Symbol("X"));
         board.accept(invalidMove);
     }
 
     @Test
-    public void shouldReturnSymbolForAGivenPositionOnTheBoard() throws DuplicateMoveException, GameFinishedException, InvalidMoveException {
+    public void shouldReturnSymbolForAGivenPositionOnTheBoard() throws DuplicateMoveException, InvalidMoveException {
 
         Position p = new Position(1, 1);
         Move x = new Move(p, new Symbol("X"));
