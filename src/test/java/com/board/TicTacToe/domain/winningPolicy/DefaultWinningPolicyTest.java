@@ -1,4 +1,4 @@
-package com.board.TicTacToe.domain.impl;
+package com.board.TicTacToe.domain.winningPolicy;
 
 import com.board.TicTacToe.domain.GameState;
 import com.board.TicTacToe.domain.Move;

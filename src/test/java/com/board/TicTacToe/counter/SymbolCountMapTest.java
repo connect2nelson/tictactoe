@@ -1,5 +1,8 @@
-package com.board.TicTacToe.domain;
+package com.board.TicTacToe.counter;
 
+import com.board.TicTacToe.domain.Move;
+import com.board.TicTacToe.domain.Position;
+import com.board.TicTacToe.domain.Symbol;
 import com.board.TicTacToe.domain.counter.SymbolCountMap;
 import org.junit.Test;
 

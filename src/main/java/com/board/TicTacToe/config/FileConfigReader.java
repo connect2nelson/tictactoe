@@ -7,9 +7,9 @@ import java.util.Properties;
 
 public class FileConfigReader implements ConfigReader {
     private static final String SIZE = "size";
-    private static final String PLAYER_1_SYMBOL = "player_1_symbol";
-    private static final String PLAYER_2_SYMBOL = "player_2_symbol";
-    private static final String COMPUTER_SYMBOL = "computer_symbol";
+    private static final String PLAYER_1_SYMBOL = "player1.symbol";
+    private static final String PLAYER_2_SYMBOL = "player2.symbol";
+    private static final String COMPUTER_SYMBOL = "computer.symbol";
     private File configFile;
 
     public FileConfigReader(File configFile) {
