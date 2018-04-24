@@ -10,13 +10,6 @@ public class Symbol {
         this.symbol = symbol;
     }
 
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -25,12 +18,21 @@ public class Symbol {
 
         Symbol symbol1 = (Symbol) o;
 
-        return symbol == symbol1.symbol;
+        return symbol != null ? symbol.equals(symbol1.symbol) : symbol1.symbol == null;
     }
 
     @Override
     public int hashCode() {
-        return symbol.hashCode();
+        return symbol != null ? symbol.hashCode() : 0;
+    }
+
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
 }
