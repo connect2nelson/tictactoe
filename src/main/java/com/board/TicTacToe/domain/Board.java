@@ -1,6 +1,6 @@
 package com.board.TicTacToe.domain;
 
-import com.board.TicTacToe.domain.counter.LinearSymbolCountMap;
+import com.board.TicTacToe.domain.counter.LinearSymbolCounter;
 import com.board.TicTacToe.exception.InvalidMoveException;
 import com.board.TicTacToe.domain.winningPolicy.WinningPolicy;
 import com.board.TicTacToe.exception.DuplicateMoveException;
@@ -14,7 +14,7 @@ public class Board {
 
     private Symbol[][] grid;
 
-    private LinearSymbolCountMap linearSymbolCountMap;
+    private LinearSymbolCounter linearSymbolCounter;
 
     private WinningPolicy winningPolicy;
 
@@ -24,7 +24,7 @@ public class Board {
         this.gridSize = gridSize;
         this.winningPolicy = winningPolicy;
 
-        linearSymbolCountMap = new LinearSymbolCountMap(gridSize, symbols);
+        linearSymbolCounter = new LinearSymbolCounter(gridSize, symbols);
 
         initializeBoard(rows, cols);
     }
@@ -46,7 +46,7 @@ public class Board {
 
         registerTheInputMove(move);
 
-        return winningPolicy.computeGameState(linearSymbolCountMap, move.getSymbol());
+        return winningPolicy.computeGameState(linearSymbolCounter, move.getSymbol());
 
     }
 
@@ -54,7 +54,7 @@ public class Board {
         int movePosX = move.getPosition().getX();
         int movePosY = move.getPosition().getY();
         grid[movePosX][movePosY] = move.getSymbol();
-        linearSymbolCountMap.updateCount(move);
+        linearSymbolCounter.updateCount(move);
     }
 
     private void checkIfInputMoveIsValid(Move move) throws
