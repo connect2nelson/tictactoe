@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SymbolCountMap {
+public class LinearSymbolCountMap {
 
-    Map<Symbol, int[]> countMap = new HashMap<>();
+    private Map<Symbol, int[]> countMap = new HashMap<>();
 
     private int gridSize;
     private int noOfMovesAccounted ;
 
-    public SymbolCountMap(int gridSize, List<Symbol> symbols) {
+    public LinearSymbolCountMap(int gridSize, List<Symbol> symbols) {
         this.gridSize = getRowIndexInCountArray(gridSize);
         initialize(symbols);
     }
@@ -23,10 +23,8 @@ public class SymbolCountMap {
         return gridSize;
     }
 
-    public void initialize(List<Symbol> symbols) {
-        symbols.forEach((symbol) -> {
-            countMap.put(symbol, new int[2 * getRowIndexInCountArray(gridSize) + 2]);
-        });
+    private void initialize(List<Symbol> symbols) {
+        symbols.forEach((symbol) -> countMap.put(symbol, new int[2 * getRowIndexInCountArray(gridSize) + 2]));
     }
 
     public int getNoOfMovesAccounted() {

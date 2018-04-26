@@ -2,31 +2,31 @@ package com.board.TicTacToe.domain.winningPolicy;
 
 import com.board.TicTacToe.domain.GameState;
 import com.board.TicTacToe.domain.Symbol;
-import com.board.TicTacToe.domain.counter.SymbolCountMap;
+import com.board.TicTacToe.domain.counter.LinearSymbolCountMap;
 
 public class DefaultWinningPolicy implements WinningPolicy {
 
     @Override
-    public GameState computeGameState(SymbolCountMap symbolCountMap, Symbol symbol) {
+    public GameState computeGameState(LinearSymbolCountMap linearSymbolCountMap, Symbol symbol) {
 
-        final int WINNING_COUNT = symbolCountMap.getGridSize();
+        final int WINNING_COUNT = linearSymbolCountMap.getGridSize();
 
-        for (int i = 0; i < symbolCountMap.getGridSize(); i++) {
+        for (int i = 0; i < linearSymbolCountMap.getGridSize(); i++) {
 
-            if (symbolCountMap.getSymbolCountForCol(i, symbol) == WINNING_COUNT)
+            if (linearSymbolCountMap.getSymbolCountForCol(i, symbol) == WINNING_COUNT)
                 return GameState.WON;
 
-            if (symbolCountMap.getSymbolCountForRow(i, symbol) == WINNING_COUNT)
+            if (linearSymbolCountMap.getSymbolCountForRow(i, symbol) == WINNING_COUNT)
                 return GameState.WON;
         }
 
-        if (symbolCountMap.getSymbolCountForLeftDiagonal(symbol) == WINNING_COUNT)
+        if (linearSymbolCountMap.getSymbolCountForLeftDiagonal(symbol) == WINNING_COUNT)
             return GameState.WON;
 
-        if (symbolCountMap.getSymbolCountForRightDiagonal(symbol) == WINNING_COUNT)
+        if (linearSymbolCountMap.getSymbolCountForRightDiagonal(symbol) == WINNING_COUNT)
             return GameState.WON;
 
-        if ( symbolCountMap.getNoOfMovesAccounted() == symbolCountMap.getGridSize() * symbolCountMap.getGridSize()){
+        if ( linearSymbolCountMap.getNoOfMovesAccounted() == linearSymbolCountMap.getGridSize() * linearSymbolCountMap.getGridSize()){
             return GameState.DRAW;
         }
 
