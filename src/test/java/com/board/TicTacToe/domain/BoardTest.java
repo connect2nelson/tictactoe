@@ -13,9 +13,9 @@ import static org.mockito.Mockito.mock;
 
 
 public class BoardTest {
-    Board board;
+    private Board board;
 
-    WinningPolicy winningPolicy;
+    private WinningPolicy winningPolicy;
 
     @Before
     public void setUp() throws Exception {
@@ -26,25 +26,31 @@ public class BoardTest {
 
     @Test
     public void shouldCreateABoardForGivenSize() {
-        assertThat(board.getNoOfVacantSpaces()).isEqualTo(9);
+        assertThat(board.getGridSize()).isEqualTo(3);
     }
 
     @Test
     public void shouldAcceptAMove() throws InvalidMoveException, DuplicateMoveException {
         Position p = new Position(1, 1);
-        board.accept(new Move(p, new Symbol("X")));
-        assertThat(board.getNoOfVacantSpaces()).isEqualTo(8);
+        Symbol symbolX = new Symbol("X");
+        board.accept(new Move(p, symbolX));
+        assertThat(board.getSymbolForPosition(p)).isEqualTo(symbolX);
     }
 
     @Test
     public void shouldAcceptMoreThanOneMove() throws InvalidMoveException, DuplicateMoveException {
         Position p = new Position(1, 1);
-        board.accept(new Move(p, new Symbol("X")));
+        Symbol symbolX = new Symbol("X");
+        board.accept(new Move(p, symbolX));
+
+        assertThat(board.getSymbolForPosition(p)).isEqualTo(symbolX);
 
         p = new Position(2, 2);
-        board.accept(new Move(p, new Symbol("X")));
+        board.accept(new Move(p, symbolX));
 
-        assertThat(board.getNoOfVacantSpaces()).isEqualTo(7);
+        assertThat(board.getSymbolForPosition(p)).isEqualTo(symbolX);
+
+
     }
 
 

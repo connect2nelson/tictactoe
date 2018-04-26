@@ -10,21 +10,19 @@ import java.util.List;
 public class Board {
 
     private final int gridSize;
-    private int noOfVacantSpaces;
     private int rows, cols;
 
     private Symbol[][] grid;
 
-    SymbolCountMap symbolCountMap;
+    private SymbolCountMap symbolCountMap;
 
-    private WinningPolicy policy;
+    private WinningPolicy winningPolicy;
 
-    public Board(int gridSize, WinningPolicy policy, List<Symbol> symbols) {
+    public Board(int gridSize, WinningPolicy winningPolicy, List<Symbol> symbols) {
         this.rows = gridSize;
         this.cols = gridSize;
         this.gridSize = gridSize;
-        this.noOfVacantSpaces = rows * cols;
-        this.policy = policy;
+        this.winningPolicy = winningPolicy;
 
         symbolCountMap = new SymbolCountMap(rows, symbols);
 
@@ -41,18 +39,14 @@ public class Board {
         }
     }
 
-    public int getNoOfVacantSpaces() {
-        return noOfVacantSpaces;
-    }
 
     public GameState accept(Move move) throws InvalidMoveException, DuplicateMoveException {
 
         checkIfInputMoveIsValid(move);
 
-        noOfVacantSpaces--;
         registerTheInputMove(move);
 
-        return policy.computeGameState(symbolCountMap, move.getSymbol());
+        return winningPolicy.computeGameState(symbolCountMap, move.getSymbol());
 
     }
 
