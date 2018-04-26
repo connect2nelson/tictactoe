@@ -24,7 +24,7 @@ public class Board {
         this.gridSize = gridSize;
         this.winningPolicy = winningPolicy;
 
-        symbolCountMap = new SymbolCountMap(rows, symbols);
+        symbolCountMap = new SymbolCountMap(gridSize, symbols);
 
         initializeBoard(rows, cols);
     }
