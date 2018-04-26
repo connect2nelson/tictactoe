@@ -7,7 +7,7 @@ import com.board.TicTacToe.domain.counter.LinearSymbolCounter;
 public class DefaultWinningPolicy implements WinningPolicy {
 
     @Override
-    public GameState computeGameState(LinearSymbolCounter linearSymbolCounter, Symbol symbol) {
+    public GameState computeGameState(Symbol[][] gridSymbol, LinearSymbolCounter linearSymbolCounter, Symbol symbol) {
 
         final int WINNING_COUNT = linearSymbolCounter.getGridSize();
 

@@ -28,7 +28,7 @@ public class DefaultWinningPolicyTest {
         linearSymbolCounter.updateCount(new Move(new Position(0, 0), symbolX));
         linearSymbolCounter.updateCount(new Move(new Position(0, 1), symbolX));
 
-        assertThat(winningPolicy.computeGameState(linearSymbolCounter, symbolX)).isEqualTo(GameState.PLAYABLE);
+        assertThat(winningPolicy.computeGameState(null, linearSymbolCounter, symbolX)).isEqualTo(GameState.PLAYABLE);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class DefaultWinningPolicyTest {
         linearSymbolCounter.updateCount(new Move(new Position(2, 1), symbolC));
         linearSymbolCounter.updateCount(new Move(new Position(2, 2), symbolX));
 
-        assertThat(winningPolicy.computeGameState(linearSymbolCounter, symbolX)).isEqualTo(GameState.DRAW);
+        assertThat(winningPolicy.computeGameState(null, linearSymbolCounter, symbolX)).isEqualTo(GameState.DRAW);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class DefaultWinningPolicyTest {
         linearSymbolCounter.updateCount(new Move(new Position(0, 1), symbolX));
         linearSymbolCounter.updateCount(new Move(new Position(0, 2), symbolX));
 
-        assertThat(winningPolicy.computeGameState(linearSymbolCounter, symbolX)).isEqualTo(GameState.WON);
+        assertThat(winningPolicy.computeGameState(null, linearSymbolCounter, symbolX)).isEqualTo(GameState.WON);
     }
 
     @Test
@@ -75,7 +75,7 @@ public class DefaultWinningPolicyTest {
         linearSymbolCounter.updateCount(new Move(new Position(1, 0), symbolX));
         linearSymbolCounter.updateCount(new Move(new Position(2, 0), symbolX));
 
-        assertThat(winningPolicy.computeGameState(linearSymbolCounter, symbolX)).isEqualTo(GameState.WON);
+        assertThat(winningPolicy.computeGameState(null, linearSymbolCounter, symbolX)).isEqualTo(GameState.WON);
     }
 
     @Test
@@ -88,7 +88,7 @@ public class DefaultWinningPolicyTest {
         linearSymbolCounter.updateCount(new Move(new Position(1, 1), symbolX));
         linearSymbolCounter.updateCount(new Move(new Position(2, 2), symbolX));
 
-        assertThat(winningPolicy.computeGameState(linearSymbolCounter, symbolX)).isEqualTo(GameState.WON);
+        assertThat(winningPolicy.computeGameState(null, linearSymbolCounter, symbolX)).isEqualTo(GameState.WON);
     }
 
     @Test
@@ -101,7 +101,7 @@ public class DefaultWinningPolicyTest {
         linearSymbolCounter.updateCount(new Move(new Position(1, 1), symbolX));
         linearSymbolCounter.updateCount(new Move(new Position(2, 0), symbolX));
 
-        assertThat(winningPolicy.computeGameState(linearSymbolCounter, symbolX)).isEqualTo(GameState.WON);
+        assertThat(winningPolicy.computeGameState(null, linearSymbolCounter, symbolX)).isEqualTo(GameState.WON);
     }
 
 }

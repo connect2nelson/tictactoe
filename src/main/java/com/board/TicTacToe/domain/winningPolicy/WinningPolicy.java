@@ -6,6 +6,6 @@ import com.board.TicTacToe.domain.Symbol;
 
 public interface WinningPolicy {
     
-    GameState computeGameState(LinearSymbolCounter linearSymbolCounter, Symbol symbol );
+    GameState computeGameState(Symbol[][] symbolGrid, LinearSymbolCounter linearSymbolCounter, Symbol symbol );
 
 }

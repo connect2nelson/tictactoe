@@ -46,7 +46,7 @@ public class Board {
 
         registerTheInputMove(move);
 
-        return winningPolicy.computeGameState(linearSymbolCounter, move.getSymbol());
+        return winningPolicy.computeGameState(grid, linearSymbolCounter, move.getSymbol());
 
     }
 
